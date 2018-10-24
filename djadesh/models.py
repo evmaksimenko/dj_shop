@@ -15,6 +15,7 @@ class ItemProperty(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True)
     property_name = models.CharField(max_length=200)
     property_value = models.CharField(max_length=200)
+    is_primary = models.BooleanField(default=False)
 
     def __str__(self):
         return self.property_name
