@@ -6,7 +6,7 @@ from .models import Item, ItemProperty, ItemImages, Store
 
 class PropertyInline(admin.TabularInline):
     model = ItemProperty
-    extra = 3
+    extra = 5
 
 
 class ImageInline(admin.TabularInline):
