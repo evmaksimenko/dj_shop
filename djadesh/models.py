@@ -4,7 +4,7 @@ from django.db import models
 class Item(models.Model):
     code = models.CharField(max_length=8)
     name = models.CharField(max_length=200)
-    description = models.CharField(max_length=1024)
+    description = models.CharField(max_length=1024, blank=True, default="")
     price = models.DecimalField(max_digits=8, decimal_places=2)
 
     def __str__(self):
