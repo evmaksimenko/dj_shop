@@ -1,9 +1,12 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import ListView
+from .models import Item
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+class IndexView(ListView):
+    model = Item
+    template_name = 'djadesh/index.html'
 
 
 def detail(request, item_id):
