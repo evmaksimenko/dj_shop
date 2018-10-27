@@ -1,15 +1,40 @@
 {% extends "djadesh/base.html" %}
 
+{% load static %}
+
 {% block title %}Магазин на django{% endblock %}
 
+{% block head_link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'djadesh/css/index.css' %}">
+{% endblock %}
+
 {% block content %}
-    {% if item_list %}
-        <ul>
-        {% for item in item_list %}
-            <li><a href="{{ item.id }}/">{{ item.name }}</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No items.</p>
-    {% endif %}
+    <table cellpadding="5">
+        {% if item_list %}
+            {% for item in item_list %}
+                <tr>
+                    <td rowspan="2">
+                        <a href="{{ item.id }}/"><img src="media/{{ item.itemimages_set.all.0.img }}"></a>
+                    </td>
+                    <td>
+                        <a href="{{ item.id }}/">{{ item.name }}</a>
+                    </td>
+                    <td>
+                        <a href="{{ item.id }}/">{{ item.price }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            {% for property in item.itemproperty_set.all %}
+                                <li>{{ property.property_name }} - {{ property.property_value }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <p>No items.</p>
+        {% endif %}
+    </table>
 {% endblock content %}
