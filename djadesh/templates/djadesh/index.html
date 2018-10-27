@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Магазин на django</title>
-</head>
-<body>
+{% extends "djadesh/base.html" %}
+
+{% block title %}Магазин на django{% endblock %}
+
+{% block content %}
     {% if item_list %}
         <ul>
         {% for item in item_list %}
-            <li><a href="/{{ item.id }}/">{{ item.name }}</a></li>
+            <li><a href="{{ item.id }}/">{{ item.name }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
         <p>No items.</p>
     {% endif %}
-</body>
-</html>
+{% endblock content %}
