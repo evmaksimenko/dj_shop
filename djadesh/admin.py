@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 
-from .models import Item, ItemProperty, ItemImages, Store
+from .models import Item, ItemProperty, ItemImage, Store
 
 
 class PropertyInline(admin.TabularInline):
@@ -10,7 +10,7 @@ class PropertyInline(admin.TabularInline):
 
 
 class ImageInline(admin.TabularInline):
-    model = ItemImages
+    model = ItemImage
     extra = 3
 
 
