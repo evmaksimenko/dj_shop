@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% load imagekit %}
+
+{% get_media_prefix %}
+
 {% block title %}Магазин на django{% endblock %}
 
 {% block head_link %}
@@ -13,21 +17,23 @@
         {% if item_list %}
             {% for item in item_list %}
                 <tr>
-                    <td rowspan="2">
-                        <a href="{{ item.id }}/"><img src="media/{{ item.itemimages_set.all.0.img }}"></a>
+                    <td rowspan="2" class="image">
+                        <a href="{{ item.id }}/">
+                            {% generateimage 'djadesh:preview' source=item.get_main_image.img -- class="main" %}
+                        </a>
                     </td>
-                    <td>
+                    <td class="name">
                         <a href="{{ item.id }}/">{{ item.name }}</a>
                     </td>
-                    <td>
-                        <a href="{{ item.id }}/">{{ item.price }}</a>
+                    <td rowspan="2" class="price">
+                        <a class="price" href="{{ item.id }}/">{{ item.price }}</a>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="properties">
                         <ul>
-                            {% for property in item.itemproperty_set.all %}
-                                <li>{{ property.property_name }} - {{ property.property_value }}</li>
+                            {% for property in item.get_primary_properties %}
+                                <li class="properties">{{ property.property_name }} {{ property.property_value }}</li>
                             {% endfor %}
                         </ul>
                     </td>
