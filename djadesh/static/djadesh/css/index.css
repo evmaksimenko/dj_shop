@@ -1,0 +1,64 @@
+a {
+    color: #0000cd; /* Цвет обычной ссылки */
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+}
+a:visited {
+    color: #0000cd; /* Цвет посещённой ссылки */
+}
+a:hover {
+    color: #e53936; /* Цвет ссылки при наведении на нее курсора мыши */
+}
+a.price {
+    color: #000000; /* Цвет обычной ссылки */
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    font-size: 25px;
+    font-weight: bold;
+}
+a.price:visited {
+    color: #000000; /* Цвет посещённой ссылки */
+}
+a.price:hover {
+    color: red; /* Цвет ссылки при наведении на нее курсора мыши */
+}
+table {
+    width: 50%; /* Ширина таблицы */
+    border: 0px; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    border-collapse:separate;
+	border-spacing: 0px 10px;
+}
+td {
+    text-align: center; /* Выравнивание по центру */
+}
+td.price {
+    vertical-align: top;
+    text-align: left;
+    width: 5%;
+}
+td.name {
+    vertical-align: top;
+    text-align: left;
+    width: 30%;
+}
+td.image {
+    vertical-align: center;
+    width: 15%;
+}
+td.properties {
+    text-align: left;
+    vertical-align: top;
+    width: 30%;
+    font-size: 14px;
+    /*font-weight: bold;*/
+    /*font-family: Geneva, Arial, Helvetica, sans-serif;*/
+    /*list-style-type: none;*/
+}
+li.properties {
+    list-style-type: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+img.main {
+    /*width: 300px;*/
+    /*height: 300px;*/
+}
