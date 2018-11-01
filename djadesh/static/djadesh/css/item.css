@@ -1,0 +1,53 @@
+.layout { position: relative; }
+.layout DIV { position: absolute; }
+.header { left: 20%; top: 30px; right: 15%; }
+.link { left: 20%; top: 10px; }
+.col1 { left: 20%; width: 30%; top: 120px; }
+.col2 {
+    left: 50%;
+    width: 20%;
+    top: 120px;
+    padding-left: 20px;
+}
+.col3 {
+    text-align: center;
+    left: 70%;
+    top: 120px;
+    width: 10%;
+    height: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.mainimage {
+    left: 15%;
+    width: 20%;
+    top: 150px;
+}
+.previews {
+    left: 10%;
+    width: 5%;
+    top: 150px;
+}
+.properties {
+    left: 45%;
+    top: 150px;
+}
+.basket {
+    left: 75%;
+    top: 20px;
+    width: 10%;
+    text-align: center;
+}
+a {
+    color: #0000cd; /* Цвет обычной ссылки */
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+}
+a:visited {
+    color: #0000cd; /* Цвет посещённой ссылки */
+}
+a:hover {
+    color: #e53936; /* Цвет ссылки при наведении на нее курсора мыши */
+}
+h1.price {
+    font-size: 20px;
+    font-weight: bold;
+}

@@ -1,0 +1,65 @@
+{% extends "djadesh/base.html" %}
+
+{% load static %}
+
+{% load imagekit %}
+
+{% get_media_prefix %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block head_link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'djadesh/css/item.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="layout">
+        <div class="basket">
+            <p>В вашей корзине
+            <p>{{ basket_items_count }} товаров.
+            <p>На сумму {{ basket_total_price }} руб.
+        </div>
+        <div class="link"><a href="{% url 'djadesh:index' %}">Назад</a></div>
+        {% if item %}
+            <div class="header"><h1>{{ item.name|truncatechars:50 }}</h1></div>
+            <div class="previews">
+                <table>
+                    {% for image in item.images.all %}
+                        <tr>
+                            <td>
+                                <a href="#" onclick='document.getElementById("mainImage1").src="{{ image.img.url }}"'>{% thumbnail '50x50' image.img %}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="mainimage">
+                {% generateimage 'djadesh:mainimage' source=item.get_main_image.img -- class="main" id="mainImage1"%}
+            </div>
+            <div class="properties">
+                <ul>
+                    <b>Коротко о товаре</b>
+                    {% for property in item.properties.all %}
+                        <li class="properties">{{ property.property_name }} {{ property.property_value }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+{#            {% set image_filename='img/' + item.code + ".jpeg"%}#}
+{#            <div class="col1"><img src="{{ url_for('static', filename=image_filename) }}"></div>#}
+{#            {% if desc %}#}
+{#                <div class="col2">#}
+{#                    <h3>Коротко о товаре</h3>#}
+{#                    <ul>#}
+{#                    {% for d in desc %}#}
+{#                        <li>{{ d }}</li>#}
+{#                    {% endfor %}#}
+{#                    </ul>#}
+{#                </div>#}
+{#            {% endif %}#}
+{#            <div class="col3">#}
+{#                <p>Лучшая цена</p>#}
+{#                <h1 class="price">{{ item.price }} Руб</h1>#}
+{#            </div>#}
+        {% endif %}
+    </div>
+{% endblock %}
