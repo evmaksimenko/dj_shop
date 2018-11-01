@@ -13,6 +13,16 @@
 {% endblock %}
 
 {% block content %}
+    <table>
+    <tr>
+        <td class="shopheader">Лучший интернет магазин!</td>
+        <td class="shopbasket">
+            <p>В вашей корзине </p>
+            <p>{{ basket_items_count }} товаров.</p>
+            <p>На сумму {{ basket_total_price }} руб.</p>
+        </td>
+    </tr>
+    </table>
     <table cellpadding="5">
         {% if item_list %}
             {% for item in item_list %}

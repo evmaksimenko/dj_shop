@@ -53,6 +53,21 @@ td.properties {
     /*font-family: Geneva, Arial, Helvetica, sans-serif;*/
     /*list-style-type: none;*/
 }
+td.shopheader {
+    text-align: center;
+    vertical-align: center;
+    width: 40%;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+    color: cadetblue;
+    /*list-style-type: none;*/
+}
+td.shopbasket {
+    text-align: center;
+    vertical-align: center;
+    width: 10%;
+}
 li.properties {
     list-style-type: none;
     margin-top: 5px;
