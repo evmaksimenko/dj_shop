@@ -17,7 +17,8 @@ class Item(models.Model):
         return self.images.all()[0]
 
     def get_quantity(self):
-        return self.store.quantity;
+        return self.store.quantity
+
 
 class ItemProperty(models.Model):
     item = models.ForeignKey(
@@ -36,7 +37,9 @@ class ItemProperty(models.Model):
 
 
 class ItemImage(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='images')
+    item = models.ForeignKey(Item,
+                             on_delete=models.CASCADE,
+                             related_name='images')
     img_name = models.CharField(max_length=200)
     img = models.ImageField(upload_to='items', null=True)
 
@@ -45,7 +48,9 @@ class ItemImage(models.Model):
 
 
 class Store(models.Model):
-    item = models.OneToOneField(Item, on_delete=models.CASCADE, primary_key=True)
+    item = models.OneToOneField(Item,
+                                on_delete=models.CASCADE,
+                                primary_key=True)
     quantity = models.IntegerField(default=0)
 
     def __str__(self):

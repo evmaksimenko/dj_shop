@@ -18,8 +18,10 @@ class IndexView(generic.ListView):
             self.request.session['basket_items'] = []
             self.request.session['basket_items_count'] = 0
             self.request.session['basket_total_price'] = 0
-        context['basket_items_count'] = self.request.session.get('basket_items_count', 0)
-        context['basket_total_price'] = self.request.session.get('basket_total_price', 0)
+        context['basket_items_count'] = \
+            self.request.session.get('basket_items_count', 0)
+        context['basket_total_price'] = \
+            self.request.session.get('basket_total_price', 0)
         return context
 
 
@@ -33,8 +35,10 @@ class ItemView(generic.DetailView):
             self.request.session['basket_items'] = []
             self.request.session['basket_items_count'] = 0
             self.request.session['basket_total_price'] = 0
-        context['basket_items_count'] = self.request.session.get('basket_items_count', 0)
-        context['basket_total_price'] = self.request.session.get('basket_total_price', 0)
+        context['basket_items_count'] = \
+            self.request.session.get('basket_items_count', 0)
+        context['basket_total_price'] = \
+            self.request.session.get('basket_total_price', 0)
         return context
 
 
@@ -61,7 +65,11 @@ def basket(request):
         item = get_object_or_404(Item, pk=item_id)
         total_price += item.price
         items.append(item)
-    return render(request, 'djadesh/basket.html', {'items': items, 'total_price': total_price})
+    return render(
+        request,
+        'djadesh/basket.html',
+        {'items': items, 'total_price': total_price}
+    )
 
 
 class Preview(ImageSpec):
