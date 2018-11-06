@@ -32,8 +32,14 @@
     top: 150px;
 }
 .basket {
-    left: 75%;
+    left: 85%;
     top: 20px;
+    width: 10%;
+    text-align: center;
+}
+.price {
+    left: 75%;
+    top: 150px;
     width: 10%;
     text-align: center;
 }
@@ -48,6 +54,6 @@ a:hover {
     color: #e53936; /* Цвет ссылки при наведении на нее курсора мыши */
 }
 h1.price {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: bold;
 }
