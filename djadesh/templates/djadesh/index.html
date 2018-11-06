@@ -17,9 +17,11 @@
     <tr>
         <td class="shopheader">Лучший интернет магазин!</td>
         <td class="shopbasket">
-            <p>В вашей корзине </p>
-            <p>{{ basket_items_count }} товаров.</p>
-            <p>На сумму {{ basket_total_price }} руб.</p>
+            <a href="{% url 'djadesh:basket' %}">
+                <p>В вашей корзине </p>
+                <p>{{ basket_items_count }} товара(ов).</p>
+                <p>На сумму {{ basket_total_price }} руб.</p>
+            </a>
         </td>
     </tr>
     </table>
