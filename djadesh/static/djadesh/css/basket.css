@@ -1,0 +1,34 @@
+.layout { position: relative; }
+.layout DIV { position: absolute; }
+.header { left: 20%; top: 30px; right: 15%; }
+.link { left: 10%; top: 10px; }
+.basket {
+    left: 10%;
+    top: 50px;
+    width: 80%;
+    text-align: center;
+}
+a {
+    color: #0000cd; /* Цвет обычной ссылки */
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+}
+a:visited {
+    color: #0000cd; /* Цвет посещённой ссылки */
+}
+a:hover {
+    color: #e53936; /* Цвет ссылки при наведении на нее курсора мыши */
+}
+table.basket {
+    width: 80%; /* Ширина таблицы */
+    border: 0px; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    border-collapse:separate;
+	border-spacing: 0px 10px;
+}
+td.id {
+    width: 10%;
+}
+td.name {
+    width: 80%;
+    text-align: left;
+}

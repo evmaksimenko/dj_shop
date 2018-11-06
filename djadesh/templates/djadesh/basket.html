@@ -1,0 +1,35 @@
+{% extends "djadesh/base.html" %}
+
+{% load static %}
+
+{% load imagekit %}
+
+{% get_media_prefix %}
+
+{% block title %}Ваша корзина{% endblock %}
+
+{% block head_link %}
+    <link rel="stylesheet" type="text/css" href="{% static 'djadesh/css/basket.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="layout">
+        <div class="link"><a href="{% url 'djadesh:index' %}">На главную</a></div>
+        <div class="basket">
+            <h3>В корзине</h3>
+            <table class="basket">
+                {% for item in items %}
+                    <tr>
+                        <td class="id">{{ forloop.counter }}</td>
+                        <td class="name">{{ item.name }}</td>
+                        <td>{{ item.price }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Купить всё сейчас!">
+            </form>
+        </div>
+    </div>
+{% endblock %}
