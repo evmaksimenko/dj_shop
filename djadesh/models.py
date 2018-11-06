@@ -5,7 +5,7 @@ class Item(models.Model):
     code = models.CharField(max_length=8)
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=1024, blank=True, default="")
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    price = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
@@ -16,6 +16,8 @@ class Item(models.Model):
     def get_main_image(self):
         return self.images.all()[0]
 
+    def get_quantity(self):
+        return self.store.quantity;
 
 class ItemProperty(models.Model):
     item = models.ForeignKey(
@@ -43,7 +45,7 @@ class ItemImage(models.Model):
 
 
 class Store(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    item = models.OneToOneField(Item, on_delete=models.CASCADE, primary_key=True)
     quantity = models.IntegerField(default=0)
 
     def __str__(self):
