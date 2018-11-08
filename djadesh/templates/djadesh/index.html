@@ -30,15 +30,15 @@
             {% for item in item_list %}
                 <tr>
                     <td rowspan="2" class="image">
-                        <a href="{{ item.id }}/">
+                        <a href="{% url 'djadesh:detail' item.id %}">
                             {% generateimage 'djadesh:preview' source=item.get_main_image.img -- class="main" %}
                         </a>
                     </td>
                     <td class="name">
-                        <a href="{{ item.id }}/">{{ item.name }}</a>
+                        <a href="{% url 'djadesh:detail' item.id %}">{{ item.name }}</a>
                     </td>
                     <td rowspan="2" class="price">
-                        <a class="price" href="{{ item.id }}/">{{ item.price }}</a>
+                        <a class="price" href="{% url 'djadesh:detail' item.id %}">{{ item.price }}</a>
                     </td>
                 </tr>
                 <tr>
