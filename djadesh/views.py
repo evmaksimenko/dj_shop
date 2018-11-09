@@ -1,7 +1,5 @@
 from django.views import generic
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
+from django.shortcuts import render, get_object_or_404, redirect
 from imagekit import ImageSpec, register
 from imagekit.processors import ResizeToFit
 
@@ -53,12 +51,12 @@ def basket_add(request, item_id):
         request.session['basket_items'].append(item.id)
         request.session['basket_items_count'] += 1
         request.session['basket_total_price'] += item.price
-    return HttpResponseRedirect(reverse('djadesh:basket'))
+    return redirect('djadesh:basket')
 
 
 def basket(request):
     if not request.session.get('basket_items', []):
-        return HttpResponseRedirect(reverse('djadesh:index'))
+        return redirect('djadesh:index')
     items = []
     total_price = 0
     for item_id in request.session['basket_items']:
