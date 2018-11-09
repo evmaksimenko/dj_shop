@@ -79,11 +79,16 @@ class Common(Configuration):
 
     USE_TZ = True
 
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticprod/')
     STATIC_URL = '/static/'
 
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
     MEDIA_URL = '/media/'
 
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'djadesh/static/'),
+        os.path.join(BASE_DIR, 'static/'),
+    ]
 
 class Dev(Common):
     DEBUG = True
