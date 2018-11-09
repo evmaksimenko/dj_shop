@@ -68,12 +68,11 @@ td.shopbasket {
     vertical-align: center;
     width: 10%;
 }
+td.pagination {
+    text-align: center;
+}
 li.properties {
     list-style-type: none;
     margin-top: 5px;
     margin-bottom: 5px;
-}
-img.main {
-    /*width: 300px;*/
-    /*height: 300px;*/
 }

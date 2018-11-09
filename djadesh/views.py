@@ -9,6 +9,7 @@ from .models import Item
 class IndexView(generic.ListView):
     model = Item
     template_name = 'djadesh/index.html'
+    paginate_by = 2
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
