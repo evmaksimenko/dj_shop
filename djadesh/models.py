@@ -14,7 +14,7 @@ class Item(models.Model):
         return self.properties.filter(is_primary=True)
 
     def get_main_image(self):
-        return self.images.all()[0]
+        return self.images.first()
 
     def get_quantity(self):
         return self.store.quantity
