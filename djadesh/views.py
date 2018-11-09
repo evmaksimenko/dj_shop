@@ -6,39 +6,29 @@ from imagekit.processors import ResizeToFit
 from .models import Item
 
 
-class IndexView(generic.ListView):
+class DefaultShopMixin():
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if not self.request.session.get('basket_items', []):
+            self.request.session['basket_items'] = []
+            self.request.session['basket_items_count'] = 0
+            self.request.session['basket_total_price'] = 0
+        context['basket_items_count'] = \
+            self.request.session.get('basket_items_count', 0)
+        context['basket_total_price'] = \
+            self.request.session.get('basket_total_price', 0)
+        return context
+
+
+class IndexView(DefaultShopMixin, generic.ListView):
     model = Item
     template_name = 'djadesh/index.html'
     paginate_by = 2
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if not self.request.session.get('basket_items', []):
-            self.request.session['basket_items'] = []
-            self.request.session['basket_items_count'] = 0
-            self.request.session['basket_total_price'] = 0
-        context['basket_items_count'] = \
-            self.request.session.get('basket_items_count', 0)
-        context['basket_total_price'] = \
-            self.request.session.get('basket_total_price', 0)
-        return context
 
-
-class ItemView(generic.DetailView):
+class ItemView(DefaultShopMixin, generic.DetailView):
     model = Item
     template_name = 'djadesh/item.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if not self.request.session.get('basket_items', []):
-            self.request.session['basket_items'] = []
-            self.request.session['basket_items_count'] = 0
-            self.request.session['basket_total_price'] = 0
-        context['basket_items_count'] = \
-            self.request.session.get('basket_items_count', 0)
-        context['basket_total_price'] = \
-            self.request.session.get('basket_total_price', 0)
-        return context
 
 
 def basket_add(request, item_id):
