@@ -7,6 +7,7 @@ from .models import Item
 
 
 class DefaultShopMixin():
+    model = Item
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         if not self.request.session.get('basket_items', []):
@@ -21,13 +22,11 @@ class DefaultShopMixin():
 
 
 class IndexView(DefaultShopMixin, generic.ListView):
-    model = Item
     template_name = 'djadesh/index.html'
     paginate_by = 2
 
 
 class ItemView(DefaultShopMixin, generic.DetailView):
-    model = Item
     template_name = 'djadesh/item.html'
 
 
