@@ -30,34 +30,39 @@ class ItemView(DefaultShopMixin, generic.DetailView):
     template_name = 'djadesh/item.html'
 
 
-def basket_add(request, item_id):
-    item = get_object_or_404(Item, pk=item_id)
-    if not request.session.get('basket_items', []):
-        request.session['basket_items'] = []
-        request.session['basket_items_count'] = 0
-        request.session['basket_total_price'] = 0
-    store_quantity = item.store.quantity
-    if store_quantity:
-        request.session['basket_items'].append(item.id)
-        request.session['basket_items_count'] += 1
-        request.session['basket_total_price'] += item.price
-    return redirect('djadesh:basket')
+class BasketCount(generic.View):
+    def post(self, request, *args, **kwargs):
+        item = get_object_or_404(Item, pk=kwargs['item_id'])
+        if not request.session.get('basket_items', []):
+            request.session['basket_items'] = []
+            request.session['basket_items_count'] = 0
+            request.session['basket_total_price'] = 0
+        store_quantity = item.store.quantity
+        if store_quantity:
+            request.session['basket_items'].append(item.id)
+            request.session['basket_items_count'] += 1
+            request.session['basket_total_price'] += item.price
+        return redirect('djadesh:basket')
 
 
-def basket(request):
-    if not request.session.get('basket_items', []):
-        return redirect('djadesh:index')
-    items = []
-    total_price = 0
-    for item_id in request.session['basket_items']:
-        item = get_object_or_404(Item, pk=item_id)
-        total_price += item.price
-        items.append(item)
-    return render(
-        request,
-        'djadesh/basket.html',
-        {'items': items, 'total_price': total_price}
-    )
+class Basket(generic.View):
+    def get(self, request, *args, **kwargs):
+        if not request.session.get('basket_items', []):
+            return redirect('djadesh:index')
+        items = []
+        total_price = 0
+        for item_id in request.session['basket_items']:
+            item = get_object_or_404(Item, pk=item_id)
+            total_price += item.price
+            items.append(item)
+        return render(
+            request,
+            'djadesh/basket.html',
+            {'items': items, 'total_price': total_price}
+        )
+
+    def post(self, request, *args, **kwargs):
+        return redirect('djadesh:basket')
 
 
 class Preview(ImageSpec):
