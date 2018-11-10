@@ -1,5 +1,6 @@
 Django==2.1.2
 django-appconf==1.0.2
+django-configurations==2.1
 django-imagekit==4.0.2
 flake8==3.6.0
 mccabe==0.6.1
